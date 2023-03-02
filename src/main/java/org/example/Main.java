@@ -12,7 +12,7 @@ public class Main {
 
         while(cmd.equals("등록")){
 //            if(){
-                id;
+                id++;
                 System.out.printf("명언 : ");
                 sc.nextLine();
                 System.out.printf("작가 : ");
