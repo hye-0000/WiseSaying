@@ -1,14 +1,12 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
         int id = 0;
         List<Wise> list = new ArrayList<>();
+        ListComparator comp = new ListComparator();
         System.out.println("==명언 앱==");
         System.out.print("명령)");
         Scanner sc = new Scanner(System.in);
@@ -29,6 +27,7 @@ public class Main {
                 System.out.print("명령)");
                 cmd = sc.nextLine();
             } else if (cmd.equals("목록")) {
+                Collections.sort(list, comp);
                 System.out.println("번호 / 작가 / 명언");
                 System.out.println("----------------------------");
                 for(Wise wises : list){
@@ -36,6 +35,9 @@ public class Main {
                 }
                 System.out.print("명령)");
                 cmd = sc.nextLine();
+            } else if (cmd.equals("삭제?id=")) {
+                sc.nextLine();
+                //list.remove();
             }
         }
     }
@@ -75,4 +77,21 @@ class Wise{
     public void setAuthor(String author) {
         this.author = author;
     }
+}
+
+class ListComparator implements Comparator<Wise>{
+    @Override
+    public int compare(Wise first, Wise second){
+        int firstValue = first.getWiseId();
+        int secondValue = second.getWiseId();
+
+        if(firstValue>secondValue){
+            return -1;
+        }else if(firstValue<secondValue){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+
 }
