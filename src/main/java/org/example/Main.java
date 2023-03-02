@@ -2,6 +2,8 @@ package org.example;
 
 import java.util.*;
 
+import static java.lang.Integer.parseInt;
+
 public class Main {
     public static void main(String[] args) {
         int id = 0;
@@ -35,8 +37,13 @@ public class Main {
                 }
                 System.out.print("명령)");
                 cmd = sc.nextLine();
-            } else if (cmd.equals("삭제?id=")) {
-                sc.nextLine();
+            } else if (cmd.contains("삭제?id=")) {
+                int wiseId = parseInt(cmd.replaceAll("[^0-9]", ""));
+                //System.out.println(list.get(wiseId).getWiseId());
+                list.remove(list.get(wiseId-1));
+                System.out.println(wiseId + "번 명언이 삭제 되었습니다.");
+                System.out.print("명령)");
+                cmd = sc.nextLine();
                 //list.remove();
             }
         }
