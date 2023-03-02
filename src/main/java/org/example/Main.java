@@ -24,7 +24,7 @@ public class Main {
                 wise = sc.nextLine();
                 System.out.printf("작가 : ");
                 author = sc.nextLine();
-                System.out.println(id + "번 명령이 등록되었습니다.");
+                System.out.println(id + "번 명언이 등록되었습니다.");
                 list.add(new Wise(id, wise, author));
                 System.out.print("명령)");
                 cmd = sc.nextLine();
@@ -39,13 +39,39 @@ public class Main {
                 cmd = sc.nextLine();
             } else if (cmd.contains("삭제?id=")) {
                 int wiseId = parseInt(cmd.replaceAll("[^0-9]", ""));
-                //System.out.println(list.get(wiseId).getWiseId());
-                list.remove(list.get(wiseId-1));
-                System.out.println(wiseId + "번 명언이 삭제 되었습니다.");
+                Wise wises_ = null;
+                for(Wise wises : list){
+                    if(wises.getWiseId() == wiseId){
+                        wises_ = wises;
+                    }
+                }
+                if(wises_ == null){
+                    System.out.println("명언이 존재하지 않습니다.");
+                }
+                list.remove(wises_);
                 System.out.print("명령)");
                 cmd = sc.nextLine();
-                //list.remove();
             }
+
+                //for(i = 0; i < list.size(); i++){
+                //    if()
+                //    System.out.println(list.get(i).getWiseId());
+//                    if(list.get(i).getWiseId() == wiseId){
+//                        System.out.println(list.get(i).getWiseId());
+//                        list.remove(i);
+//                        System.out.println(wiseId + "번 명언이 삭제 되었습니다.");
+//                    }else{
+//                        System.out.println(list.get(i).getWiseId());
+//                        System.out.println(wiseId+"번 명언은 존재하지 않습니다");
+//                        break;
+//                    }
+
+               // System.out.println(list.get(wiseId).getWiseId());
+                //list.remove(list.get(wiseId).getWiseId());
+
+
+                //list.remove();
+            //}
         }
     }
 }
