@@ -51,27 +51,27 @@ public class Main {
                 list.remove(wises_);
                 System.out.print("명령)");
                 cmd = sc.nextLine();
+            } else if (cmd.contains("수정?id=")) {
+                int wiseId = parseInt(cmd.replaceAll("[^0-9]", ""));
+                int idx = 0;
+                Wise wises_ = null;
+                for(Wise wises : list){
+                    if(wises.getWiseId() == wiseId){
+                        wises_ = wises;
+                    }
+                }
+                idx= list.indexOf(wises_);
+
+                System.out.println("명언(기존) : " + wises_.getWiseSaying());
+                System.out.printf("명언 : ");
+                wise = sc.nextLine();
+                System.out.println("작가(기존) : " + wises_.getAuthor());
+                System.out.printf("작가 : ");
+                author = sc.nextLine();
+                list.set(idx, new Wise(wiseId, wise, author));
+                System.out.print("명령)");
+                cmd = sc.nextLine();
             }
-
-                //for(i = 0; i < list.size(); i++){
-                //    if()
-                //    System.out.println(list.get(i).getWiseId());
-//                    if(list.get(i).getWiseId() == wiseId){
-//                        System.out.println(list.get(i).getWiseId());
-//                        list.remove(i);
-//                        System.out.println(wiseId + "번 명언이 삭제 되었습니다.");
-//                    }else{
-//                        System.out.println(list.get(i).getWiseId());
-//                        System.out.println(wiseId+"번 명언은 존재하지 않습니다");
-//                        break;
-//                    }
-
-               // System.out.println(list.get(wiseId).getWiseId());
-                //list.remove(list.get(wiseId).getWiseId());
-
-
-                //list.remove();
-            //}
         }
     }
 }
